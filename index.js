@@ -5,7 +5,7 @@ module.exports = function (){
     var defaultSort = '-published';
     var db = state.db;
 
-    var types = require('./lib/activityMongoose.js')(state.mongoose, db, state.options.defaultActorImage);
+    var types = require('./lib/activityMongoose.js')(state.mongoose, db, state.options.defaultActorImage, state.options.modelNames);
 
      // Functions
     types.ActivitySchema.statics.getFirehose = function(n, fx) {
@@ -47,14 +47,17 @@ module.exports = function (){
             state.redisClient.unsubscribe(streamName);
         }
     }
-
+    console.log("Using modelnames");
+    console.log(state.options.modelNames);
     this.types = types;
-
+    var activityModelName = state.options.modelNames? state.options.modelNames.Activity: 'activity',
+        activityObjectModelName = state.options.modelNames? state.options.modelNames.ActivityObject: 'activityObject',
+        actorModelName = state.options.modelNames? state.options.modelNames.Actor: 'user';
     this.DB = function(db, types) {
         return {
-            ActivityObject : db.model('activityObject', types.ActivityObjectSchema),
-            Activity : db.model('activity', types.ActivitySchema),
-            User : db.model('user', types.UserSchema)
+            ActivityObject : db.model(activityModelName, types.ActivityObjectSchema),
+            Activity : db.model(activityObjectModelName, types.ActivitySchema),
+            User : db.model(actorModelName, types.UserSchema)
         }
     };
 

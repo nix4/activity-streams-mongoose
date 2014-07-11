@@ -17,6 +17,9 @@ For details on the properties each see pne of the following specifications:
 * http://activitystrea.ms/specs/json/1.0/
 * http://opensocial-resources.googlecode.com/svn/spec/2.0/Social-Data.xml#ActivityEntry
 
+## Update
+
+Added ability to specify custom collection names for mongoose models used to store activities, activity objetcs and users.
 
 ## Usage
 
@@ -54,6 +57,11 @@ Example format is `mongodb://localhost/mongodb-asms`
   - database
 
 Redis is required to be able to publish activities and subscribe to Activity Streams
+
+- modelNames --> An optional Hash that contains the names that should be used for each of the following:
+  - Activity
+  - ActivityType
+  - Actor
 
 ### To create an activity object you can do
 
