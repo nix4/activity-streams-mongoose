@@ -47,8 +47,7 @@ module.exports = function (){
             state.redisClient.unsubscribe(streamName);
         }
     }
-    console.log("Using modelnames");
-    console.log(state.options.modelNames);
+
     this.types = types;
     var activityModelName = state.options.modelNames? state.options.modelNames.Activity: 'activity',
         activityObjectModelName = state.options.modelNames? state.options.modelNames.ActivityObject: 'activityObject',
