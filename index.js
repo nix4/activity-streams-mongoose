@@ -54,8 +54,8 @@ module.exports = function (){
         actorModelName = state.options.modelNames? state.options.modelNames.Actor: 'user';
     this.DB = function(db, types) {
         return {
-            ActivityObject : db.model(activityModelName, types.ActivityObjectSchema),
-            Activity : db.model(activityObjectModelName, types.ActivitySchema),
+            ActivityObject : db.model(activityObjectModelName, types.ActivityObjectSchema),
+            Activity : db.model(activityModelName, types.ActivitySchema),
             User : db.model(actorModelName, types.UserSchema)
         }
     };
