@@ -5,7 +5,7 @@ module.exports = function (){
     var defaultSort = '-published';
     var db = state.db;
 
-    var types = require('./lib/activityMongoose.js')(state.mongoose, db, state.options.defaultActorImage, state.options.modelNames);
+    var types = require('./lib/activityMongoose.js')(state.mongoose, db, state.options.defaultActorImage, state.options.modelNames, state.options.defaultBaseUrls);
 
      // Functions
     types.ActivitySchema.statics.getFirehose = function(n, fx) {
